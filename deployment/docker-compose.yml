@@ -1,0 +1,114 @@
+version: '3.7'
+
+services:
+    rk_mysql:
+        image: mysql:latest
+        restart: unless-stopped
+        networks:
+            - backend
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - 3306:3306
+        volumes:
+            - mysql_data:/var/lib/mysql
+        command:
+            - --character-set-server=utf8
+            - --collation-server=utf8_general_ci
+            - --innodb-buffer-pool-size=1G
+            - --innodb-flush-log-at-trx-commit=0
+            - --innodb-log-file-size=1G
+            - --max-allowed-packet=100M
+            - --innodb-fast-shutdown=0
+            - --innodb-max-dirty-pages-pct=0
+
+    rk_elastic:
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+        restart: unless-stopped
+        environment:
+            - cluster.name=rk_test
+            - discovery.type=single-node
+            - action.auto_create_index=.security*,.monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*
+            - xpack.security.enabled=false
+            - ES_JAVA_OPTS=-Xms1g -Xmx1g
+        networks:
+            - backend
+        ports:
+            - 9200:9200
+            - 9300:9300
+        volumes:
+            - elastic_data:/usr/share/elasticsearch/data
+
+    rk_kibana:
+        image: docker.elastic.co/kibana/kibana:8.6.0
+        restart: unless-stopped
+        networks:
+            - backend
+            - traefik-publicrkbackend
+        environment:
+            ELASTICSEARCH_HOSTS: http://rk_elastic:9200
+        ports:
+            - 5601:5601
+        command: /usr/local/bin/kibana-docker
+
+    postgres:
+        image: postgres:14.1-alpine
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: rk_test
+            POSTGRES_USER: rk_test
+            POSTGRES_PASSWORD: rk_test
+        ports:
+            - 5432:5432
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - backend
+
+    mongo:
+        image: mongo:latest
+        restart: unless-stopped
+        networks:
+            - backend
+        ports:
+            - 27017:27017
+        volumes:
+            - mongo_data:/data/db
+
+    redis:
+        image: redis:latest
+        restart: unless-stopped
+        networks:
+            - backend
+        ports:
+            - 6379:6379
+
+    rkkafka:
+        image: bitnami/kafka:latest
+        restart: unless-stopped
+        networks:
+            - backend
+        ports:
+            - 9092:9092
+            - 2181:2181
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_CFG_ZOOKEEPER_CONNECT: rkkafka:2181
+            ALLOW_PLAINTEXT_LISTENER: yes
+            KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+            KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+            KAFKA_CFG_LISTENERS: PLAINTEXT://:9092
+        volumes:
+            - kafka_data:/bitnami/kafka
+
+networks:
+    backend:
+    traefik-publicrkbackend:
+        external: true
+
+volumes:
+    mysql_data:
+    postgres_data:
+    mongo_data:
+    elastic_data:
+    kafka_data:
