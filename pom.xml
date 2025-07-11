@@ -20,6 +20,9 @@
         <module>reactive</module>
         <module>elasticsearch-data</module>
         <module>spring-security</module>
+        <module>vault</module>
+        <module>generative-ai</module>
+        <module>spring-session</module>
     </modules>
 
     <repositories>
