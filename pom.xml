@@ -21,6 +21,7 @@
         <module>elasticsearch-data</module>
         <module>spring-security</module>
         <module>vault</module>
+        <module>spring-data</module>
         <module>generative-ai</module>
         <module>spring-session</module>
     </modules>

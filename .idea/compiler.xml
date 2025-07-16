@@ -7,17 +7,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-security" />
         <module name="reactive" />
+        <module name="spring-data" />
+        <module name="spring-security" />
+        <module name="generative-ai" />
         <module name="elasticsearch-data" />
+        <module name="spring-session" />
+        <module name="vault" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="elasticsearch-data" options="-parameters" />
+      <module name="generative-ai" options="-parameters" />
       <module name="reactive" options="-parameters" />
+      <module name="spring-data" options="-parameters" />
       <module name="spring-security" options="-parameters" />
+      <module name="spring-session" options="-parameters" />
+      <module name="vault" options="-parameters" />
     </option>
   </component>
 </project>
