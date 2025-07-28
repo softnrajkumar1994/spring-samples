@@ -13,6 +13,8 @@
     <artifactId>spring-data</artifactId>
 
     <dependencies>
+
+
         <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>azure-spring-boot-starter-cosmos</artifactId>

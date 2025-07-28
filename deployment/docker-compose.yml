@@ -17,7 +17,6 @@ services:
             - --collation-server=utf8_general_ci
             - --innodb-buffer-pool-size=1G
             - --innodb-flush-log-at-trx-commit=0
-            - --innodb-log-file-size=1G
             - --max-allowed-packet=100M
             - --innodb-fast-shutdown=0
             - --innodb-max-dirty-pages-pct=0

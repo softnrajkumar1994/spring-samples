@@ -14,6 +14,7 @@
         <module name="elasticsearch-data" />
         <module name="spring-session" />
         <module name="vault" />
+        <module name="hibernate-validator-examples" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="elasticsearch-data" options="-parameters" />
       <module name="generative-ai" options="-parameters" />
+      <module name="hibernate-validator-examples" options="-parameters" />
       <module name="reactive" options="-parameters" />
       <module name="spring-data" options="-parameters" />
       <module name="spring-security" options="-parameters" />

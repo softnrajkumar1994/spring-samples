@@ -23,6 +23,7 @@
         <module>vault</module>
         <module>spring-data</module>
         <module>generative-ai</module>
+        <module>hibernate-validator-examples</module>
         <module>spring-session</module>
     </modules>
 
