@@ -25,6 +25,7 @@
         <module>generative-ai</module>
         <module>hibernate-validator-examples</module>
         <module>spring-session</module>
+        <module>hibernate-orm-examples</module>
     </modules>
 
     <repositories>
