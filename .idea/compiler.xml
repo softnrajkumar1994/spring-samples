@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="reactive" />
+        <module name="hibernate-orm-examples" />
         <module name="spring-data" />
         <module name="spring-security" />
         <module name="generative-ai" />
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="elasticsearch-data" options="-parameters" />
       <module name="generative-ai" options="-parameters" />
+      <module name="hibernate-orm-examples" options="-parameters" />
       <module name="hibernate-validator-examples" options="-parameters" />
       <module name="reactive" options="-parameters" />
       <module name="spring-data" options="-parameters" />
