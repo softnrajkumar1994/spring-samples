@@ -10,6 +10,7 @@
         <module name="reactive" />
         <module name="hibernate-orm-examples" />
         <module name="spring-data" />
+        <module name="spring-framework" />
         <module name="spring-security" />
         <module name="generative-ai" />
         <module name="elasticsearch-data" />
@@ -27,6 +28,7 @@
       <module name="hibernate-validator-examples" options="-parameters" />
       <module name="reactive" options="-parameters" />
       <module name="spring-data" options="-parameters" />
+      <module name="spring-framework" options="-parameters" />
       <module name="spring-security" options="-parameters" />
       <module name="spring-session" options="-parameters" />
       <module name="vault" options="-parameters" />

@@ -26,6 +26,7 @@
         <module>hibernate-validator-examples</module>
         <module>spring-session</module>
         <module>hibernate-orm-examples</module>
+        <module>spring-framework</module>
     </modules>
 
     <repositories>
